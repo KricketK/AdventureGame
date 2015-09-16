@@ -15,5 +15,7 @@ class Character(object):
         self.attack = attack
         self.defense = defense
 
-    def fight(self, damage):
-        self.damage = enemy_attack - self.defense
+    def fight(self, damage, inflict):
+        self.damage = damage
+            enemy_attack - self.defense
+        self.inflict = inflict
