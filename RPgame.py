@@ -31,17 +31,17 @@ while begin:
     else:
         if path == 1:
             print "So you're a tough-guy, huh?"
-            user = Fighter(raw_input("What's your name?"))
+            user = Fighter(raw_input("What's your name?"), raw_input("Choose your weapon."))
             begin = False
         elif path == 2:
             print "I'm watching you, magic user."
-            user = Wizard(raw_input("What's your name?"))
+            user = Wizard(raw_input("What's your name?"), raw_input("Choose your weapon."))
             begin = False
         elif path == 3:
-            print "Are you lost?"
-            user = Scholar(raw_input("What's your name?"))
+            print "You're rather scrawny. Are you lost?"
+            user = Scholar(raw_input("What's your name?"), raw_input("Choose your weapon."))
             begin = False
-        elif path > 3:
+        elif 0 > path > 3:
             print "Oh a special snowflake, eh? \n"
 
 
