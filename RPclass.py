@@ -123,6 +123,7 @@ class Alchemist(Scholar):
 def rollClass(character_type, name):
     return character_type(name, health=random.randint(1, 15), defense=random.randint(1, 7))
 
+begin = True
 print("Welcome to the arena!")
 
 print("Here is your opponent!")
@@ -130,11 +131,24 @@ print("Here is your opponent!")
 Hickory = Barbarian('Hickory', 13, 8, 3, 'poison')
 print Hickory
 
-raw_input('What path do you choose?'
-      '1. Fighter'
-      '2. Wizard'
-      '3. Scholar')
-
+while begin:
+    path = raw_input('What path number do you choose? \n 1. Fighter \n 2. Wizard \n 3. Scholar')
+    try:
+        path = int(path)
+    except ValueError:
+        print("Choose the number associated with the path.")
+    else:
+        if path == 1:
+            print "So you're a tough-guy, huh?"
+            begin = False
+        elif path == 2:
+            print "I'm watching you, magic user."
+            begin = False
+        elif path == 3:
+            print "Are you lost?"
+            begin = False
+        elif path > 3:
+            print "Oh a special snowflake, eh? \n"
 
 
 #read up on types - stryder
