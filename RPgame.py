@@ -60,23 +60,28 @@ while character:
 
     if weapon_choice == 1:
         player.weapon = Sword
+        print "You have chosen to carry a Sword into battle."
     elif weapon_choice == 2:
         player.weapon = Axe
+        print "You have chosen to carry a Axe into battle."
     elif weapon_choice == 3:
         player.weapon = Knife
+        print "You have chosen to carry a Knife into battle."
     elif weapon_choice == 4:
         player.weapon = Wand
+        print "You have chosen to carry a Wand into battle."
     elif weapon_choice == 5:
         player.weapon = Staff
+        print "You have chosen to carry a Staff into battle."
     elif weapon_choice == 6:
         player.weapon = Broomstick
+        print "You have chosen to carry a Broomstick into battle."
     elif weapon_choice == 7:
         player.weapon = Pen
+        print "You have chosen to carry a Pen into battle."
     if 0 < weapon_choice < 8:
         character = False
     elif 0 > weapon_choice > 7:
         print "You need a weapon before you may enter."
-
-
 
 print "hello friend"
