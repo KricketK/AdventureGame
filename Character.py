@@ -5,6 +5,7 @@ import random
 from Weapon import *
 from Special import *
 
+
 class Character(object):
 
     def __init__(self, name, weapon, health=15, power=10, defense=10, special=Special()):
@@ -56,6 +57,9 @@ class Wizard(Character):
             self.weapon = Familiar
         elif self.weapon == 6:
             self.weapon = Knife
+        elif 0 > self.weapon > 6:
+            character = False
+            print "You need a weapon before you may enter."
 
 
 class Mage(Wizard):
@@ -94,8 +98,11 @@ class Fighter(Character):
             self.weapon = Poison
         elif self.weapon == 7:
             self.weapon = WarAxe
-        elif self.weapon == 8
+        elif self.weapon == 8:
             self.weapon = GreatSword
+        elif 0 > self.weapon > 8:
+            character = False
+            print "You need a weapon before you may enter."
 
 
 class Barbarian(Fighter):
@@ -138,6 +145,7 @@ class Scholar(Character):
         elif self.weapon == 6:
             self.weapon = Hyde
         elif 0 > self.weapon > 6:
+            character = False
             print "You need a weapon before you may enter."
 
 class Alchemist(Scholar):
