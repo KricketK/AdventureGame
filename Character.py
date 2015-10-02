@@ -1,59 +1,24 @@
 __author__ = 'KRISTINE'
 
+
 import random
-
-#Character basic needs
-#class basic needs
-    #HP, Attack, Defense, (Special Abilities, Character Description)
-#classes: Fighter, Barbarian, Assassin, Wizard, Mage, Shaman, Alchemist
-
-def fight(character1, character2):
-    character1.defend(character2.attack())
-
-
-
-class Weapon(object):
-    def __init__(self):
-        self.attack_power = 0
-        self.attack_penalty = 0
-
-
-class Club(Weapon):
-    def __init__(self):
-        super(Club, self).__init__()
-        self.attack_power = 4
-        self.attack_penalty = 0
-
-
-class Sword(Weapon):
-    def __init__(self):
-        super(Sword, self).__init__()
-        self.attack_power = 5
-        self.attack_penalty = 1
-
+from Weapon import *
+from Special import *
 
 class Character(object):
 
-    def __init__(self, name, special, health=10, power=5, defense=5, weapon=Weapon()):
+    def __init__(self, name, health=15, power=10, defense=10, weapon=Weapon(), special=Special()):
         self.weapon = weapon
         self.name = name
-        self.special = special
         self.health = health
         self.power = power
         self.defense = defense
-        self.weapon = weapon
+        self.weapon = ()
         self.proficiencies = []
+        self.special = special
 
     def __str__(self):
-        return "My name is " + self.name + "Prepare yourself."
-
-    def add(self, stat, other):
-        print(str(stat) + " increased by " + str(other))
-        self.stat += other
-
-    def reduce(self, stat, other):
-        print(str(stat) + " decreased by " + str(other))
-        self.stat -= other
+        return "My name is " + self.name + ". Prepare yourself."
 
     def attack(self):
         hit_strength = random.randint(1, self.power)
@@ -73,7 +38,11 @@ class Character(object):
 class Wizard(Character):
     def __init__(self, *args, **kwargs):
         super(Wizard, self).__init__(*args, **kwargs)
+        self.health = 15 + random.randint(3, 4)
+        self.attack = 10 + random.randint(-1, 3)
+        self.defense = 10 + random.randint(-1, 3)
         self.proficiencies = ['wand', 'staff', 'broomstick']
+        self.special = Pureblood
 
 
 class Mage(Wizard):
@@ -91,7 +60,24 @@ class Shaman(Wizard):
 class Fighter(Character):
     def __init__(self, *args, **kwargs):
         super(Fighter, self).__init__(*args, **kwargs)
+        self.health = 15 + random.randint(-2, 2)
+        self.attack = 10 + random.randint(1, 4)
+        self.defense = 10 + random.randint(1, 4)
         self.proficiencies = ['sword', 'axe', 'knife']
+        self.special = Thickskin
+        self.weapon = raw_input("Pick your weapon: 1. Sword \n 2. Axe \n 3. Knife \n 4. Club \n 5. Dart \n 6. Poison")
+        if self.weapon == 1:
+            self.weapon = Sword
+        elif self.weapon == 2:
+            self.weapon = Axe
+        elif self.weapon == 3:
+            self.weapon = Knife
+        elif self.weapon == 4:
+            self.weapon = Club
+        elif self.weapon == 5:
+            self.weapon = Dart
+        elif self.weapon == 6:
+            self.weapon = Poison
 
 
 class Barbarian(Fighter):
@@ -110,45 +96,15 @@ class Assassin(Fighter):
 class Scholar(Character):
     def __init__(self, *args, **kwargs):
         super(Scholar,self).__init__(*args, **kwargs)
+        self.health = 15 + random.randint(-3, 3)
+        self.attack = 10 + random.randint(-3, 3)
+        self.defense = 10 + random.randint(-3,3)
         self.proficiencies = ['knife', 'pen']
-        self.special = self.damage + random.randint(1, 3)
+        self.special = Cunning
 
 
 class Alchemist(Scholar):
     def __init__(self, *args, **kwargs):
         super(Alchemist, self).__init__(*args, **kwargs)
         self.proficiencies.extend(['bombs', 'elixirs', 'poison', 'hyde'])
-        self.special = self.damage
-
-def rollClass(character_type, name):
-    return character_type(name, health=random.randint(1, 15), defense=random.randint(1, 7))
-
-begin = True
-print("Welcome to the arena!")
-
-print("Here is your opponent!")
-
-Hickory = Barbarian('Hickory', 13, 8, 3, 'poison')
-print Hickory
-
-while begin:
-    path = raw_input('What path number do you choose? \n 1. Fighter \n 2. Wizard \n 3. Scholar')
-    try:
-        path = int(path)
-    except ValueError:
-        print("Choose the number associated with the path.")
-    else:
-        if path == 1:
-            print "So you're a tough-guy, huh?"
-            begin = False
-        elif path == 2:
-            print "I'm watching you, magic user."
-            begin = False
-        elif path == 3:
-            print "Are you lost?"
-            begin = False
-        elif path > 3:
-            print "Oh a special snowflake, eh? \n"
-
-
-#read up on types - stryder
+        self.special = Cunning
