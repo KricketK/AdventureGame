@@ -13,8 +13,8 @@ class Item(object):
 class UserItem(Item):
     def __init__(self, *args, **kwargs):
         super(UserItem, self).__init__(*args, **kwargs)
-        harm = random.randrange(user.health, user.attack, user.defense) - random.randint(1, 3)
-        aid = random.randrange(user.health, user.attack, user.defense) + random.randint(1, 3)
+        harm = random.randrange(player.health, player.attack, player.defense) - random.randint(1, 3)
+        aid = random.randrange(player.health, player.attack, player.defense) + random.randint(1, 3)
         self.effect = random.randrange(harm, aid)
 
 
