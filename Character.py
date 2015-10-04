@@ -8,14 +8,13 @@ from Special import *
 
 class Character(object):
 
-    def __init__(self, name, weapon, health=15, power=10, defense=10, special=Special()):
+    def __init__(self, name, weapon, health=15, power=10, defense=10):
         self.name = name
         self.weapon = weapon
         self.health = health
         self.power = power
         self.defense = defense
         self.proficiencies = []
-        self.special = special
 
     def __str__(self):
         return "My name is " + self.name + ". Prepare yourself."

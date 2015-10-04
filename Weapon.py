@@ -4,177 +4,196 @@ import random
 
 
 class Weapon(object):
-    def __init__(self, written):
-        self.written = written
+    def __init__(self):
         self.attack_power = 0
         self.attack_penalty = 0
-
-
-class OpenHand(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(OpenHand, self).__init__(*args, **kwargs)
-        self.attack_power = -5
-        self.attack_penalty = 0
+        self.written = "Pick a weapon."
 
     def __str__(self):
-        return 'None'
+        return self.written
+
+class OpenHand(Weapon):
+    def __init__(self):
+        super(OpenHand, self).__init__()
+        self.attack_power = -5
+        self.attack_penalty = 0
+        self.written = "None"
+
+    def __str__(self):
+        return self.written
 
 
 class Club(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Club, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Club, self).__init__()
         self.attack_power = 4
         self.attack_penalty = 0
+        self.written = 'Club'
 
     def __str__(self):
-        return 'Club'
+        return self.written
 
 
 class Sword(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Sword, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Sword, self).__init__()
         self.attack_power = 5
         self.attack_penalty = 1
+        self.written = 'Sword'
 
     def __str__(self):
-        return 'Sword'
+        return self.written
 
 
 class Axe(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Axe, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Axe, self).__init__()
         self.attack_power = 4
         self.attack_penalty = 1
+        self.written = 'Axe'
 
     def __str__(self):
-        return 'Axe'
+        return self.written
 
 
 class Knife(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Knife, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Knife, self).__init__()
         self.attack_power = 3
         self.attack_penalty = 1
+        self.written = 'Knife'
 
     def __str__(self):
-        return 'Knife'
+        return self.written
 
 
 class Dart(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Dart, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Dart, self).__init__()
         self.attack_power = 2
         self.attack_penalty = 1
+        self.written = 'Dart'
 
     def __str__(self):
-        return 'Dart'
+        return self.written
 
 
 class Poison(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Poison, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Poison, self).__init__()
         self.attack_power = random.randint(1, 5)
         self.attack_penalty = 3
+        self.written = 'Poison'
 
     def __str__(self):
-        return 'Poison'
+        return self.written
 
 
 class Pen(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Pen, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Pen, self).__init__()
         self.attack_power = 1
         self.attack_penalty = 0
+        self.written = 'Pen'
 
     def __str__(self):
-        return 'Pen'
+        return self.written
 
 
 class Staff(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Staff, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Staff, self).__init__()
         self.attack_power = 3
         self.attack_penalty = 0
+        self.written = 'Staff'
 
     def __str__(self):
-        return 'Staff'
+        return self.written
 
 
 class Wand(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Wand, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Wand, self).__init__()
         self.attack_power = 2
         self.attack_penalty = 1
+        self.written = 'Wand'
 
     def __str__(self):
-        return 'Wand'
+        return self.written
 
 
 class Bombs(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Bombs, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Bombs, self).__init__()
         self.attack_power = 7
         self.attack_penalty = 4
+        self.written = 'Bombs'
 
     def __str__(self):
-        return 'Bombs'
+        return self.written
 
 
 class Elixirs(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Elixirs, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Elixirs, self).__init__()
         self.attack_power = 4
         self.attack_penalty = 2
+        self.written = 'Elixirs'
 
     def __str__(self):
-        return 'Elixirs'
+        return self.written
 
 
 class Hyde(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Hyde, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Hyde, self).__init__()
         self.attack_power = 7
         self.attack_penalty = 4
+        self.written = 'Hyde'
 
     def __str__(self):
-        return 'Hyde'
+        return self.written
 
 
 class Familiar(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Familiar, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Familiar, self).__init__()
         self.attack_power = 7
         self.attack_penalty = 3
+        self.written = 'Familiar'
 
     def __str__(self):
-        return 'Familiar'
+        return self.written
 
 
 class Broomstick(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(Broomstick, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(Broomstick, self).__init__()
         self.attack_power = 3
         self.attack_penalty = 1
+        self.written = 'Broomstick'
 
     def __str__(self):
-        return 'Broomstick'
+        return self.written
 
 
 class GreatSword(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(GreatSword, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(GreatSword, self).__init__()
         self.attack_power = 8
         self.attack_penalty = 4
+        self.written = 'Great Sword'
 
     def __str__(self):
-        return 'Great Sword'
+        return self.written
 
 
 class WarAxe(Weapon):
-    def __init__(self, *args, **kwargs):
-        super(WarAxe, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(WarAxe, self).__init__()
         self.attack_power = 8
         self.attack_penalty = 3
+        self.written = 'War Axe'
 
     def __str__(self):
-        return 'War Axe'
+        return self.written
