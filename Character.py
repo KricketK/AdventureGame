@@ -8,7 +8,7 @@ from Special import *
 
 class Character(object):
 
-    def __init__(self, name, weapon, health=15, power=10, defense=10):
+    def __init__(self, name, weapon=Weapon(), health=15, power=10, defense=10):
         self.name = name
         self.weapon = weapon
         self.health = health
@@ -18,6 +18,7 @@ class Character(object):
 
     def __str__(self):
         return "My name is " + self.name + ". Prepare yourself."
+
 
     def attack(self):
         hit_strength = random.randint(1, self.power)

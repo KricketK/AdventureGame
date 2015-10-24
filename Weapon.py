@@ -4,13 +4,14 @@ import random
 
 
 class Weapon(object):
-    def __init__(self):
+    def __init__(self, written=str()):
         self.attack_power = 0
         self.attack_penalty = 0
-        self.written = "Pick a weapon."
+        self.written = written
 
     def __str__(self):
         return self.written
+
 
 class OpenHand(Weapon):
     def __init__(self):
