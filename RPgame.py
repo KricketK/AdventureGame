@@ -100,37 +100,38 @@ print opponent1.name + "'s weapon is a " + str(opponent1.weapon) + "\n"
 raw_input("Let the battle begin!")
 
 Fight = True
-if player.health <= 0:
-    Fight = False
-    print "Oh dear. Lost another newbie. Sorry, friend."
-
-if opponent1.health <= 0:
-    Fight = False
-    raw_input("Hah. You made it. I'm a mite surprised. Onto the next round with you!")
 
 
 def playerattack(user, enemy):
-    hit = user.attack(user)
-    damage = enemy.defend(enemy, hit)
-    return damage
+    userhit = user.attack()
+    enemydamage = enemy.defend(userhit)
+    return enemydamage
 
 
 def enemyattack(user, enemy):
-    hit = enemy.attack(user)
-    damage = user.defend(user, hit)
-    return damage
+    enemyhit = enemy.attack()
+    userdamage = user.defend(enemyhit)
+    return userdamage
 
 while Fight:
 
     if player.health > 0:
         givedamage = playerattack(player, opponent1)
-        print (player.name + " deals " + givedamage + " against " + opponent1.name + ". " + opponent1.name +
-               "'s health is now " + opponent1.health)
+        raw_input(player.name + " deals " + str(givedamage) + " against " + opponent1.name + ". " + opponent1.name +
+               "'s health is now " + str(opponent1.health))
 
     if opponent1.health > 0:
         takedamage = enemyattack(player, opponent1)
-        print (player.name + " deals " + takedamage + " against " + opponent1.name + ". " + opponent1.name +
-               "'s health is now " + opponent1.health)
+        raw_input(opponent1.name + " deals " + str(takedamage) + " against " + player.name + ". " + player.name +
+               "'s health is now " + str(player.health))
+
+    if player.health <= 0:
+        Fight = False
+        print "Oh dear. Lost another newbie. Sorry, friend."
+
+    if opponent1.health <= 0:
+        Fight = False
+        raw_input("Hah. You made it. I'm a mite surprised. Onto the next round with you!")
 
 
 

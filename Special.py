@@ -14,7 +14,7 @@ class Special(object):
 class Cunning(Special):
     def __init__(self, *args, **kwargs):
         super(Cunning, self).__init__(*args, **kwargs)
-        self.attbonus = random.randint(1, 3)
+        self.attbonus = random.randint(1, 5)
 
     def __str__(self):
         return "Cunning adds a bonus to attack."
@@ -23,7 +23,7 @@ class Cunning(Special):
 class Pureblood(Special):
     def __init__(self, *args, **kwargs):
         super(Pureblood, self).__init__(*args, **kwargs)
-        self.healbonus = random.randint(1, 3)
+        self.healbonus = random.randint(1, 5)
 
     def __str__(self):
         return "Pureblood increases health."
@@ -32,7 +32,7 @@ class Pureblood(Special):
 class Thickskin(Special):
     def __init__(self, *args, **kwargs):
         super(Thickskin, self).__init__(*args, **kwargs)
-        self.defbonus = random.randint(1, 3)
+        self.defbonus = random.randint(1, 5)
 
     def __str__(self):
         return "Thickskin increases defense."

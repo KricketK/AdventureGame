@@ -20,11 +20,10 @@ class Character(object):
         return "My name is " + self.name + ". Prepare yourself."
 
     def attack(self):
-        hit_strength = random.randint(self.power-5, self.power)
         if self.weapon in self.proficiencies:
-            hit_strength += self.weapon.attack_power
+            hit_strength = self.weapon.attack_power + self.power
         else:
-            hit_strength -= self.weapon.attack_penalty
+            hit_strength = self.weapon.attack_penalty + self.power
             if hit_strength < 0:
                 hit_strength = 0
         return hit_strength
@@ -44,11 +43,15 @@ class Wizard(Character):
     def __init__(self, *args, **kwargs):
         super(Wizard, self).__init__(*args, **kwargs)
         self.health = 15 + random.randint(3, 4)
-        self.attack = 10 + random.randint(-1, 3)
-        self.defense = 10 + random.randint(-1, 3)
+        self.power = 10 + random.randint(-1, 3)
+        self.defense = 10 + random.randint(-2, 3)
         self.archetype = "Wizard"
         self.proficiencies = ['Wand', 'Staff', 'Broomstick']
-        self.special = Pureblood
+        self.special = Pureblood()
+
+    def apply(self):
+        self.health += self.special.healbonus
+        return self.health
 
 
 class Mage(Wizard):
@@ -70,11 +73,15 @@ class Fighter(Character):
     def __init__(self, *args, **kwargs):
         super(Fighter, self).__init__(*args, **kwargs)
         self.health = 15 + random.randint(-2, 2)
-        self.attack = 10 + random.randint(1, 4)
+        self.power = 10 + random.randint(1, 4)
         self.defense = 10 + random.randint(1, 4)
         self.archetype = "Fighter"
         self.proficiencies = ['Sword', 'Axe', 'Knife']
-        self.special = Thickskin
+        self.special = Thickskin()
+
+    def apply(self):
+        self.defense += self.special.defbonus
+        return self.defense
 
 
 class Barbarian(Fighter):
@@ -95,12 +102,16 @@ class Assassin(Fighter):
 class Scholar(Character):
     def __init__(self, *args, **kwargs):
         super(Scholar, self).__init__(*args, **kwargs)
-        self.health = 15 + random.randint(-3, 3)
-        self.attack = 10 + random.randint(-3, 3)
-        self.defense = 10 + random.randint(-3, 3)
+        self.health = 15 + random.randint(-1, 3)
+        self.power = 10 + random.randint(-1, 3)
+        self.defense = 10 + random.randint(-1, 3)
         self.archetype = "Scholar"
         self.proficiencies = ['Knife', 'Pen']
-        self.special = Cunning
+        self.special = Cunning()
+
+    def apply(self):
+        self.power += self.special.attbonus
+        return self.power
 
 
 class Alchemist(Scholar):
