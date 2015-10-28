@@ -7,14 +7,6 @@ from Special import *
 from Item import *
 
 
-def fight(character1, character2):
-    character1.defend(character2.attack())
-
-
-def rollclass(character_type, name):
-    return character_type(name, health=random.randint(1, 15), defense=random.randint(1, 7))
-
-
 begin = True
 character = False
 
@@ -55,6 +47,7 @@ print "Good luck, " + player.name + " the " + player.archetype + ". You will nee
 
 while character:
     print "You are proficient in: " + str(player.proficiencies)
+
     weapon_choice = raw_input("Pick your weapon:\n1. Sword\n2. Axe\n3. Knife\n4. Wand\n5. Staff\n6. Broomstick\n"
                               "7. Pen\n")
     try:
@@ -89,6 +82,58 @@ print "Class: " + player.archetype
 print "Your health is, " + str(player.health)
 print "Your attack power is " + str(player.power)
 print "Your defense is " + str(player.defense)
-print "Your weapon is a " + str(player.weapon)
+print "Your weapon is a " + str(player.weapon) + "\n"
+
+raw_input("Are you ready? \n")
+
+
+opponent1 = Barbarian("Hux")
+opponent1.weapon = pickweapon()
+
+print "Opponent: " + opponent1.name
+print "Class: " + opponent1.archetype
+print opponent1.name + "'s health is, " + str(opponent1.health)
+print opponent1.name + "'s attack power is " + str(opponent1.power)
+print opponent1.name + "'s defense is " + str(opponent1.defense)
+print opponent1.name + "'s weapon is a " + str(opponent1.weapon) + "\n"
+
+raw_input("Let the battle begin!")
+
+Fight = True
+if player.health <= 0:
+    Fight = False
+    print "Oh dear. Lost another newbie. Sorry, friend."
+
+if opponent1.health <= 0:
+    Fight = False
+    raw_input("Hah. You made it. I'm a mite surprised. Onto the next round with you!")
+
+
+def playerattack(user, enemy):
+    hit = user.attack(user)
+    damage = enemy.defend(enemy, hit)
+    return damage
+
+
+def enemyattack(user, enemy):
+    hit = enemy.attack(user)
+    damage = user.defend(user, hit)
+    return damage
+
+while Fight:
+
+    if player.health > 0:
+        givedamage = playerattack(player, opponent1)
+        print (player.name + " deals " + givedamage + " against " + opponent1.name + ". " + opponent1.name +
+               "'s health is now " + opponent1.health)
+
+    if opponent1.health > 0:
+        takedamage = enemyattack(player, opponent1)
+        print (player.name + " deals " + takedamage + " against " + opponent1.name + ". " + opponent1.name +
+               "'s health is now " + opponent1.health)
+
+
+
+
 
 print "hello friend"

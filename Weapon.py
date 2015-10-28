@@ -3,6 +3,9 @@ __author__ = 'KRISTINE'
 import random
 
 
+
+
+
 class Weapon(object):
     def __init__(self, written=str()):
         self.attack_power = 0
@@ -198,3 +201,10 @@ class WarAxe(Weapon):
 
     def __str__(self):
         return self.written
+
+
+def pickweapon():
+    weaponlist = [Club, Sword, Axe, Knife, Broomstick, Pen, Staff, Wand, Pen]
+    random.randint(0, len(weaponlist)-1)
+    randweapon = weaponlist[random.randint(0, len(weaponlist)-1)]()
+    return randweapon

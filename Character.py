@@ -19,9 +19,8 @@ class Character(object):
     def __str__(self):
         return "My name is " + self.name + ". Prepare yourself."
 
-
     def attack(self):
-        hit_strength = random.randint(1, self.power)
+        hit_strength = random.randint(self.power-5, self.power)
         if self.weapon in self.proficiencies:
             hit_strength += self.weapon.attack_power
         else:
@@ -32,7 +31,13 @@ class Character(object):
 
     def defend(self, attackpwr):
         if attackpwr > self.defense:
-            self.health -= attackpwr - self.defense
+            damage = attackpwr - self.defense
+            self.health -= damage
+        else:
+            damage = 0
+            self.health = self.health
+        return damage
+
 
 
 class Wizard(Character):
