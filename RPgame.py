@@ -75,6 +75,8 @@ while character:
     elif 0 > weapon_choice > 7:
         print "You need a weapon before you may enter."
 
+maxhealth = player.health
+
 print raw_input("Now that you are outfitted, take stock of your abilities. To access your abilities type in 'Myself' "
                 "at any time.")
 print "Name: " + player.name
@@ -87,7 +89,7 @@ print "Your weapon is a " + str(player.weapon) + "\n"
 raw_input("Are you ready? \n")
 
 
-opponent1 = Barbarian("Hux")
+opponent1 = Barbarian("Hux", health=8, power=5, defense=5)
 opponent1.weapon = pickweapon()
 
 print "Opponent: " + opponent1.name
@@ -115,6 +117,8 @@ def enemyattack(user, enemy):
 
 while Fight:
 
+    player.health = maxhealth
+
     if player.health > 0:
         givedamage = playerattack(player, opponent1)
         raw_input(player.name + " deals " + str(givedamage) + " against " + opponent1.name + ". " + opponent1.name +
@@ -132,8 +136,6 @@ while Fight:
     if opponent1.health <= 0:
         Fight = False
         raw_input("Hah. You made it. I'm a mite surprised. Onto the next round with you!")
-
-
 
 
 
